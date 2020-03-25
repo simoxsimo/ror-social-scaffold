@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(version: 2020_03_25_201226) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "sender_id"
-    t.integer "reciever_id"
-    t.index ["reciever_id"], name: "index_friendships_on_reciever_id"
+    t.integer "receiver_id"
+    t.index ["receiver_id"], name: "index_friendships_on_receiver_id"
     t.index ["sender_id"], name: "index_friendships_on_sender_id"
   end
 
