@@ -21,7 +21,7 @@
           <%= f.submit "Unfriend", class: "btn" %>
         <% end%>
       <% elsif current_user.friendship(@user.id).status.nil? %> <%# if I didn't get accepted nor rejected (status is nil) %>
-        <%= submit_tag "Pending", class: "btn"%>
+        <%= submit_tag "Pending", class: "btn pending"%>
       <% elsif current_user.friendship(@user.id).status == false %> <%# if I got rejected (status is false) %>
         <%= form_for(current_user.sending_requests.build) do |f| %>
           <div><%= hidden_field_tag :receiver_id, @user.id %></div>

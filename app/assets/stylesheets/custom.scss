@@ -38,7 +38,7 @@ a {
 .nav {
   display: flex;
   justify-content: space-between;
-  padding: 16px 48px;
+  padding: 16px 48px 0;
   background-color: $primary-color-dark;
   color: $primary-color-light;
 
@@ -55,6 +55,55 @@ a {
           color: #fff;
         }
       }
+    }
+  }
+  .dropdown{
+
+    .dropbtn{
+      background: none;
+      border: none;
+      position: relative;
+      top: -10px;
+    }
+
+    .dropdown-content{
+      position: absolute;
+      background-color: #689f38;
+      border-radius: 2px;
+      border-bottom: 8px solid;
+      border-color: #95D060;
+      width: 15vw;
+      right: 125px;
+
+      ul{
+
+        li{
+
+          display: flex;
+          align-items: center;
+          justify-content: space-evenly;
+          margin-left: 10px;
+
+          h5 {
+            font-size: 18px;
+            margin-right: 10px;
+            width: 60px;
+          }
+
+          #accept-btn{
+            width: 80%;
+            background-color: #51659D;
+            font-size: 12px;
+          }
+          
+          #reject-btn{
+            width: 80%;
+            background-color: #2C2E35;
+            font-size: 12px;
+          }
+        }
+      }
+
     }
   }
 }
@@ -303,9 +352,20 @@ form {
 .user-section {
   width: 100%;
   margin-left: 16px;
-
+  
   h2 {
     text-transform: capitalize;
+  }
+  
+  .pending {
+    border : none;
+    margin-top: 5px;
+    width: 20%;
+    padding: 8px;
+    text-transform: uppercase;
+    font-weight: 900;
+    border-radius: 4px;
+    background-color: #FFBF00;
   }
 
   .timeline {
