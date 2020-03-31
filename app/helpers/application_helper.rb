@@ -15,4 +15,16 @@ module ApplicationHelper
       link_to('Like!', post_likes_path(post_id: post.id), method: :post)
     end
   end
+
+  def my_friends(user_id)
+    Friendship.where("sender_id = ? AND status = ?",user_id,true).or(Friendship.where("receiver_id = ? AND status = ?",user_id, true)).count
+  end
+
+  def pending(user)
+    @count = 0
+    user.receiving_requests.each do |cases|
+      @count +=1 if cases.status == nil
+    end 
+    @count
+  end
 end
