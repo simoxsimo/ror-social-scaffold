@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :sending_requests, class_name: 'Friendship', foreign_key: 'sender_id', dependent: :destroy
-  has_many :receiving_requests, class_name: 'Friendship', foreign_key:'receiver_id', dependent: :destroy
+  has_many :receiving_requests, class_name: 'Friendship', foreign_key: 'receiver_id', dependent: :destroy
   has_many :senders, through: :receiving_requests, source: :sender
   has_many :receivers, through: :sending_requests, source: :receiver
 
@@ -22,11 +22,11 @@ class User < ApplicationRecord
     receivers.delete(other_user)
   end
 
-  def friends?(other_user)
-    receivers.include?(other_user)
-  end
-  def inverse_friends?(other_user)
-    senders.include?(other_user)
+  def friendship(req_id)
+    sending_requests.find_by(receiver_id: req_id)
   end
 
+  def inverse_friendship(req_id)
+    receiving_requests.find_by(sender_id: req_id)
+  end
 end

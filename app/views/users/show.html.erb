@@ -1,40 +1,33 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
-  <%if @user != current_user%>
-    <%if !current_user.friends?(@user) && !current_user.inverse_friends?(@user)%>
+  <% unless current_user == @user%> <%# I can request Friendship to everyone except me %>
+    <% unless current_user.friendship(@user.id) || current_user.inverse_friendship(@user.id)%> <%# Show Add as friend if I didn't send request %>
       <%= form_for(current_user.sending_requests.build) do |f| %>
         <div><%= hidden_field_tag :receiver_id, @user.id %></div>
         <%= f.submit "Add as a Friend", class: "btn btn-primary" %>
       <% end %>
-    <% end %>
-    <% if current_user.inverse_friends?(@user)%>
-      <% if check_user_pending?(@user.id) == nil %>
-        <%= form_for(update_status(@user.id), url: friendship_path(current_user.id)) do |f| %>
-          <div><%= hidden_field_tag :sender_id, @user.id %></div>
-          <div><%= hidden_field_tag :status, true %></div>
-          <%= f.submit "Approve friend request", class: "btn btn-primary" %>
+    <% else %>
+      <% if current_user.friendship(@user.id).nil? && current_user.inverse_friendship(@user.id).status %> <%# if I got accepted (status is true) current_user is the receiver %>
+        <%= form_for(current_user.inverse_friendship(@user.id),
+                 html: { method: :delete }) do |f| %>
+          <div><%= hidden_field_tag :user_id, @user.id %></div>
+          <%= f.submit "Unfriend", class: "btn" %>
+        <% end%>
+      <% elsif current_user.inverse_friendship(@user.id).nil? && current_user.friendship(@user.id).status %> <%# if I got accepted (status is true) current_user is the sender %>
+        <%= form_for(current_user.friendship(@user.id),
+                 html: { method: :delete }) do |f| %>
+          <div><%= hidden_field_tag :user_id, @user.id %></div>
+          <%= f.submit "Unfriend", class: "btn" %>
+        <% end%>
+      <% elsif current_user.friendship(@user.id).status.nil? %> <%# if I didn't get accepted nor rejected (status is nil) %>
+        <%= submit_tag "Pending", class: "btn pending"%>
+      <% elsif current_user.friendship(@user.id).status == false %> <%# if I got rejected (status is false) %>
+        <%= form_for(current_user.sending_requests.build) do |f| %>
+          <div><%= hidden_field_tag :receiver_id, @user.id %></div>
+          <%= f.submit "Add as a Friend", class: "btn btn-primary" %>
         <% end %>
-        <%= form_for(current_user.receiving_requests.find_by(sender_id:@user.id),
-                 html: { method: :delete }) do |f| %>
-        <div><%= hidden_field_tag :user_id, @user.id %></div>
-        <%= f.submit "Reject friend request", class: "btn" %>
-      <% end%>
-        
       <% end %>
     <% end %>
-    <%if current_user.friends?(@user)%>
-      <%= form_for(current_user.sending_requests.find_by(receiver_id: @user.id),
-                      html: { method: :delete }) do |f| %>
-        <%= f.submit "Unfriend", class: "btn btn-primary" %>
-      <% end %>
-    <% end %>
-    <% if current_user.inverse_friends?(@user) && check_user_pending?(@user) == true %>
-      <%= form_for(current_user.receiving_requests.find_by(sender_id:@user.id),
-                 html: { method: :delete }) do |f| %>
-        <div><%= hidden_field_tag :user_id, @user.id %></div>
-        <%= f.submit "Unfriend", class: "btn" %>
-      <% end%>
-    <% end%>
   <% end %>
   <article class="timeline">
     <h3>Recent posts:</h3>
