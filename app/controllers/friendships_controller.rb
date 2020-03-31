@@ -4,6 +4,7 @@ class FriendshipsController < ApplicationController
     current_user.send_request(user)
     status = Friendship.friend_request(current_user.id, params[:receiver_id]).status
     status = nil unless status.nil?
+
     redirect_to user
   end
 
