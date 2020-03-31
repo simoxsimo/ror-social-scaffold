@@ -13,9 +13,9 @@ class FriendshipsController < ApplicationController
 
     if reciever_unfriend_sender
       reciever_unfriend_sender.status = nil unless reciever_unfriend_sender.status.nil?
-      current_user.inverse_friendship(params[:user_id]).destroy # the receiver who is the 'current_user' is the one who delete Frienship
+      current_user.inverse_friendship(params[:user_id]).destroy # the receiver who is the 'current_user' is the one who deletes Frienship
     end
-    current_user.unfriend(user) # the sender is the one who delete Frienship, by running this method it will automatically delete the object from Friendship table too
+    current_user.unfriend(user) # the sender is the one who deletes Frienship, by running this method it will automatically deletes the object from Friendship table too
 
     redirect_to request.referrer # redirect to the same page, this trick is create a simular behaviour to async call
   end

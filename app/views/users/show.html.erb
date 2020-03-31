@@ -1,7 +1,6 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
   <% unless current_user == @user%> <%# I can request Friendship to everyone except me %>
-    <%# unless current_user.receivers.include?(@user)%>
     <% unless current_user.friendship(@user.id) || current_user.inverse_friendship(@user.id)%> <%# Show Add as friend if I didn't send request %>
       <%= form_for(current_user.sending_requests.build) do |f| %>
         <div><%= hidden_field_tag :receiver_id, @user.id %></div>
@@ -30,10 +29,6 @@
       <% end %>
     <% end %>
   <% end %>
-
-
-
-
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
