@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap");
-
+@import url("https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css");
+@import "bootstrap-sprockets";
+@import "bootstrap";
 $primary-color-dark: #689f38;
 $primary-color: #8bc34a;
 $primary-color-light: #dcedc8;
@@ -169,7 +171,7 @@ form {
 }
 
 .new_post,
-.new_comment{
+.new_comment {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -241,7 +243,7 @@ form {
   .post-liking {
     float: right;
 
-    a{
+    a {
       color: $primary-color-dark;
       font-weight: bold;
       font-size: 0.9em;
@@ -271,7 +273,7 @@ form {
       padding: 10px;
 
       p {
-        font-size: .8em;
+        font-size: 0.8em;
         width: 90%;
       }
       span {
@@ -341,4 +343,9 @@ form {
   .user-section {
     width: 50%;
   }
+}
+
+.profile {
+  min-height: 355px;
+  display: inline-block;
 }
