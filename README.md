@@ -59,8 +59,6 @@ Inside The project Repository run the following command:
 
 Then, go to **_http://localhost:3000/_**
 
-## Configure
-
 ## Add populating the database using seed
 
 1. Run `rails db:seed` to populating a database with the initial data needed for a Rails project.
