@@ -16,15 +16,17 @@ module ApplicationHelper
     end
   end
 
+  # rubocop:disable LineLength
   def my_friends(user_id)
-    Friendship.where("sender_id = ? AND status = ?",user_id,true).or(Friendship.where("receiver_id = ? AND status = ?",user_id, true)).count
+    Friendship.where('sender_id = ? AND status = ?', user_id, true).or(Friendship.where('receiver_id = ? AND status = ?', user_id, true)).count
   end
+  # rubocop:enable LineLength
 
   def pending(user)
     @count = 0
     user.receiving_requests.each do |cases|
-      @count +=1 if cases.status == nil
-    end 
+      @count += 1 if cases.status.nil?
+    end
     @count
   end
 end

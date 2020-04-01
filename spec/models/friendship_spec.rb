@@ -10,11 +10,11 @@ RSpec.describe Friendship, type: :model do
     end
     it 'a created_at column of datetime' do
       should have_db_column(:created_at).of_type(:datetime)
-        .with_options( null: false)
+        .with_options(null: false)
     end
     it 'a updated_at column of datetime' do
       should have_db_column(:updated_at).of_type(:datetime)
-        .with_options( null: false)
+        .with_options(null: false)
     end
     it 'a receiver_id" column of integer' do
       should have_db_column(:receiver_id).of_type(:integer)
@@ -29,5 +29,4 @@ RSpec.describe Friendship, type: :model do
       should belong_to(:receiver).class_name('User').optional
     end
   end
-  
 end
