@@ -117,12 +117,20 @@ a {
             width: 90%;
             background-color: #51659D;
             font-size: 12px;
+
+            &:hover{
+              display: block;
+            }
           }
             
           #reject-btn{
             width: 90%;
             background-color: #2C2E35;
             font-size: 12px;
+
+            &:hover{
+              display: block;
+            }
           }
         }
       }
