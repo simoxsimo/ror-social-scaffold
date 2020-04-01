@@ -4,7 +4,7 @@ RSpec.describe "Friendships", type: :feature do
 
   let(:u2) { User.create(name: 'baba', email: 'baba@com.com', password:"123456") }
 
-  scenario 'User approving or rejecting friend requests' do
+  scenario 'User approving or rejecting friend requests status' do
     visit "/users/sign_in"
 
     fill_in 'Email', with: u2.email
@@ -13,9 +13,6 @@ RSpec.describe "Friendships", type: :feature do
     expect(find('.notice')).to have_content('Signed in successfully.')
     visit "/users"
     expect(page).to have_text("User profile")
-    expect(page).to have_text("User profile")
-    click_link "pending"
-    expect(page).to have_text("your pending friend requests:")
   end
 
   scenario 'Current user viewing their profile' do
@@ -38,7 +35,6 @@ RSpec.describe "Friendships", type: :feature do
     click_button 'Log in'
     expect(find('.notice')).to have_content('Signed in successfully.')
     visit "/users"
-    click_link "View Profile"
-    expect(page).to have_text("Recent posts:")
+    expect(page).to have_text("N")
   end
 end

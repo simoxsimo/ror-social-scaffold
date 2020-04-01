@@ -23,10 +23,10 @@ RSpec.describe Friendship, type: :model do
 
   context 'should belong to the' do
     it 'sender' do
-      should belong_to(:sender).class_name('User')
+      should belong_to(:sender).class_name('User').optional
     end
     it 'receiver' do
-      should belong_to(:receiver).class_name('User')
+      should belong_to(:receiver).class_name('User').optional
     end
   end
   
