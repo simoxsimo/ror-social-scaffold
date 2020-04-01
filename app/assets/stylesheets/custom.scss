@@ -61,84 +61,87 @@ a {
       }
     }
   }
-  .focus{
 
-    .dropdown{
-      width: 40px;
-      height: 60px;
+  .dropdown{
+    width: 40px;
+    height: 60px;
+    position: absolute;
+    background-color: grey;
+    right: 0;
+    top: 0;
+
+    span {
+      display: flex;
+      padding-top: 10px;
+      justify-content: center;
+      font-size: 30px;
+    }
+
+    .dropbtn{
+      background: none;
+      border: none;
       position: absolute;
-      background-color: grey;
+      top: -10px;
       right: 0;
-      top: 0;
-
-      span {
-        display: flex;
-        padding-top: 10px;
-        justify-content: center;
-        font-size: 30px;
-      }
-
-      .dropbtn{
-        background: none;
-        border: none;
-        position: absolute;
-        top: -10px;
-        right: 0;
-      }
+    }
   
-      .dropdown-content{
-        display: none;
-        position: absolute;
-        background-color: #689f38;
-        border-radius: 3px;
-        border-bottom: 8px solid;
-        border-color: #95D060;
-        width: 15vw;
-        right: 0;
-        top: 60px;
+    .dropdown-content{
+      display: none;
+      position: absolute;
+      background-color: #689f38;
+      border-radius: 3px;
+      border-bottom: 8px solid;
+      border-color: #95D060;
+      width: 15vw;
+      right: 0;
+      top: 60px;
   
-        ul{
-          margin: 0;
+      ul{
+        margin: 0;
   
-          li{
-            display: flex;
-            align-items: center;
-            justify-content: space-evenly;
-            margin-left: 10px;
-            padding-top: 5px;
+        li{
+          display: flex;
+          align-items: center;
+          justify-content: space-evenly;
+          margin-left: 10px;
+          padding-top: 5px;
   
-            h5 {
-              font-size: 18px;
-              margin-right: 10px;
-              width: 60px;
-            }
-  
-            #accept-btn{
-              width: 80%;
-              background-color: #51659D;
-              font-size: 12px;
-            }
-            
-            #reject-btn{
-              width: 80%;
-              background-color: #2C2E35;
-              font-size: 12px;
-            }
+          h5 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-right: 10px;
+            width: 80px;
           }
+  
+          #accept-btn{
+            width: 90%;
+            background-color: #51659D;
+            font-size: 12px;
+          }
+            
+          #reject-btn{
+            width: 90%;
+            background-color: #2C2E35;
+            font-size: 12px;
+          }
+        }
       }
 
+      &:hover{
+        display: block;
       }
+
     }
 
     &:focus{
-      .dropdown{
         .dropdown-content{
           display: block;
+          z-index: 15;
         }
       }
     }
   }
-}
+
 
 .nav a {
   color: $primary-color-light;
