@@ -13,6 +13,6 @@ class Friendship < ApplicationRecord
   end
 
   def reject_friendship
-    update_attribute(:status, false)
+    destroy
   end
 end

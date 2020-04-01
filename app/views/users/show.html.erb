@@ -19,15 +19,10 @@
           <div><%= hidden_field_tag :user_id, @user.id %></div>
           <%= f.submit "Unfriend", class: "btn" %>
         <% end%>
-      <% elsif current_user.inverse_friendship(@user.id).nil? && current_user.friendship(@user.id).status.nil?  %> <%# if I didn't get accepted nor rejected (status is nil) %>
+      <% elsif current_user.inverse_friendship(@user.id).nil? && current_user.friendship(@user.id).status.nil?  %> <%# if I didn't get accepted nor rejected, sender profile (status is nil) %>
         <%= submit_tag "Pending", class: "btn pending"%>
-      <% elsif current_user.friendship(@user.id).nil? && current_user.inverse_friendship(@user.id).status.nil?  %>
+      <% elsif current_user.friendship(@user.id).nil? && current_user.inverse_friendship(@user.id).status.nil?  %> <%# if I didn't accept nor reject request, receiver profile (status is nil) %>
         <%= submit_tag "Request Pending", class: "btn pending"%>
-      <% elsif current_user.friendship(@user.id).status == false %> <%# if I got rejected (status is false) %>
-        <%= form_for(current_user.sending_requests.build) do |f| %>
-          <div><%= hidden_field_tag :receiver_id, @user.id %></div>
-          <%= f.submit "Add as a Friend", class: "btn btn-primary" %>
-        <% end %>
       <% end %>
     <% end %>
   <% end %>
