@@ -112,21 +112,27 @@ a {
             margin-right: 10px;
             width: 80px;
           }
-  
-          #accept-btn{
-            width: 90%;
-            background-color: #51659D;
-            font-size: 12px;
+          .edit_friendship{
 
-            &:hover{
-              display: block;
+            #accept-btn{
+              width: 90%;
+              background-color: #51659D;
+              font-size: 12px;
+  
+              &:hover{
+                display: block;
+              }
             }
-          }
-            
-          #reject-btn{
-            width: 90%;
-            background-color: #2C2E35;
-            font-size: 12px;
+              
+            #reject-btn{
+              width: 90%;
+              background-color: #2C2E35;
+              font-size: 12px;
+  
+              &:hover{
+                display: block;
+              }
+            }
 
             &:hover{
               display: block;
@@ -144,7 +150,6 @@ a {
     &:focus{
         .dropdown-content{
           display: block;
-          z-index: 15;
         }
       }
     }
