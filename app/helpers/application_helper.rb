@@ -29,4 +29,10 @@ module ApplicationHelper
     end
     @count
   end
+
+  def my_friends_post(user_id)
+    return true if Friendship.find_by(sender_id:current_user.id, receiver_id: user_id, status:true)
+    return true if Friendship.find_by(sender_id:user_id, receiver_id:current_user.id , status:true)
+    false
+  end
 end
