@@ -2,6 +2,7 @@ class Friendship < ApplicationRecord
   belongs_to :sender, class_name: 'User', optional: true
   belongs_to :receiver, class_name: 'User', optional: true
 
+  # check for duplication
   validates :sender_id, presence: true, uniqueness: { scope: :receiver_id }
 
   def self.friend_request(sender, receiver)
