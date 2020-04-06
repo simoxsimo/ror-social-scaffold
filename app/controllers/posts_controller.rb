@@ -19,9 +19,11 @@ class PostsController < ApplicationController
 
   private
 
+  # rubocop:disable LineLength
   def timeline_posts
-    @timeline_posts ||= Post.all.ordered_by_most_recent.includes(:user).where(user_id: Friendship.where(receiver_id: current_user.id, status: true).or(Friendship.where(sender_id: current_user.id, status: true)).map { |fr| fr.sender})
+    @timeline_posts ||= Post.all.ordered_by_most_recent.includes(:user).where(user_id: Friendship.where(receiver_id: current_user.id, status: true).or(Friendship.where(sender_id: current_user.id, status: true)).map(&:sender))
   end
+  # rubocop:enable LineLength
 
   def post_params
     params.require(:post).permit(:content)

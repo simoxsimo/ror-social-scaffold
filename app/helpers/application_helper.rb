@@ -16,11 +16,9 @@ module ApplicationHelper
     end
   end
 
-  # rubocop:disable LineLength
   def my_friends(user_id)
     Friendship.where('sender_id = ? AND status = ?', user_id, true).count
   end
-  # rubocop:enable LineLength
 
   def pending(user)
     @count = 0
