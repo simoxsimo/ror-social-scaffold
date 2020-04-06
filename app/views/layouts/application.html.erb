@@ -27,16 +27,17 @@
                 <li>
                   <% if req.status.nil? %>
                     <h5><%= User.find(req.sender_id).name%>:</h5>
+                     <%= form_for(req, url: friendship_path(req.sender_id)) do |f| %>
+                      <div><%= hidden_field_tag :friend, false %></div> <%# params for reject condition inside update action%>
+                      <div><%= hidden_field_tag :sender_id, req.sender_id %></div>
+                      <%= f.submit "Reject", class: "btn btn-primary",tabindex:"2", id: "reject-btn" %>
+                    <% end %>
                     <%= form_for(req, url: friendship_path(req.sender_id)) do |f| %>
                       <div><%= hidden_field_tag :friend, true %></div> <%# params for accept condition inside update action%>
                       <div><%= hidden_field_tag :sender_id, req.sender_id %></div>
                       <%= f.submit "Accept", class: "btn btn-primary", id: "accept-btn" %>
                     <% end %>
-                    <%= form_for(req, url: friendship_path(req.sender_id)) do |f| %>
-                      <div><%= hidden_field_tag :friend, false %></div> <%# params for reject condition inside update action%>
-                      <div><%= hidden_field_tag :sender_id, req.sender_id %></div>
-                      <%= f.submit "Reject", class: "btn btn-primary", id: "reject-btn" %>
-                    <% end %>
+                   
                   <% end%>
                 </li>
               <% end %>
