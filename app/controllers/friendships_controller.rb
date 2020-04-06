@@ -5,14 +5,14 @@ class FriendshipsController < ApplicationController
     get_status = Friendship.friend_request(current_user.id, params[:receiver_id]).status
     nil unless get_status.nil?
 
-    redirect_to request.referrer
+    redirect_to(request.referrer)
   end
 
   def destroy
     user = User.find(params[:user_id])
     current_user.unfriend(user)
 
-    redirect_to request.referrer
+    redirect_to(request.referrer)
   end
 
   def update
@@ -23,6 +23,6 @@ class FriendshipsController < ApplicationController
     else
       friend_req.reject_friendship
     end
-    redirect_to request.referrer # redirect to the same page, this trick is create a simular behaviour to async call
+    redirect_to(request.referrer) # redirect to the same page, this trick is create a simular behaviour to async call
   end
 end
