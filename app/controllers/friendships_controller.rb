@@ -5,17 +5,11 @@ class FriendshipsController < ApplicationController
     get_status = Friendship.friend_request(current_user.id, params[:receiver_id]).status
     nil unless get_status.nil?
 
-    redirect_to user
+    redirect_to request.referrer
   end
 
   def destroy
-    user = Friendship.find(params[:id]).receiver
-    reciever_unfriend_sender = Friendship.friend_request(params[:user_id], current_user.id)
-
-    if reciever_unfriend_sender
-      reciever_unfriend_sender.status = nil unless reciever_unfriend_sender.status.nil?
-      current_user.inverse_friendship(params[:user_id]).destroy
-    end
+    user = User.find(params[:user_id])
     current_user.unfriend(user)
 
     redirect_to request.referrer
@@ -25,6 +19,7 @@ class FriendshipsController < ApplicationController
     friend_req = Friendship.friend_request(params[:sender_id], current_user.id)
     if params[:friend] == 'true'
       friend_req.accept_friendship
+      Friendship.submit_friendship(current_user.id, params[:sender_id])
     else
       friend_req.reject_friendship
     end

@@ -18,7 +18,7 @@ module ApplicationHelper
 
   # rubocop:disable LineLength
   def my_friends(user_id)
-    Friendship.where('sender_id = ? AND status = ?', user_id, true).or(Friendship.where('receiver_id = ? AND status = ?', user_id, true)).count
+    Friendship.where('sender_id = ? AND status = ?', user_id, true).count
   end
   # rubocop:enable LineLength
 
@@ -28,11 +28,5 @@ module ApplicationHelper
       @count += 1 if cases.status.nil?
     end
     @count
-  end
-
-  def my_friends_post(user_id)
-    return true if Friendship.find_by(sender_id:current_user.id, receiver_id: user_id, status:true)
-    return true if Friendship.find_by(sender_id:user_id, receiver_id:current_user.id , status:true)
-    false
   end
 end

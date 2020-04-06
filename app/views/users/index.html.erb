@@ -37,7 +37,10 @@
                 <div class="card-body">
                   <h5 class="card-title">Name: <%= user.name %></h5>
                   <p class="card-text">Email: <%= user.email %></p>
-                  <button class="btn btn-primary"><%= link_to 'View Profile',  user_path(user), class: 'profile-link' %></button>
+                  <div class="card-btns">
+                    <button class="btn btn-primary"><%= link_to 'View Profile',  user_path(user), class: 'profile-link' %></button>
+                    <%= render partial: "friendbtns", object: @user = user %>
+                  </div>
                 </div>
               <% end %>
             <% end %>
