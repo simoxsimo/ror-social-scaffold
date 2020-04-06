@@ -18,12 +18,12 @@ RSpec.describe User, type: :model do
       should have_many(:receiving_requests).dependent(:destroy).class_name('Friendship').with_foreign_key('receiver_id')
     end
     it 'senders' do
-      should have_many(:senders).through(:receiving_requests).
-      source(:sender)
+      should have_many(:senders).through(:receiving_requests)
+        .source(:sender)
     end
     it 'receivers' do
-      should have_many(:receivers).through(:sending_requests).
-      source(:receiver)
+      should have_many(:receivers).through(:sending_requests)
+        .source(:receiver)
     end
   end
 end
