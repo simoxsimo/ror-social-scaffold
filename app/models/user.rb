@@ -20,6 +20,7 @@ class User < ApplicationRecord
 
   def unfriend(other_user)
     receivers.delete(other_user)
+    senders.delete(other_user)
   end
 
   def friendship(req_id)
