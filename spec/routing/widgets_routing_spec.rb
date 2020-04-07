@@ -1,6 +1,6 @@
-require 'rails_helper'
+require('rails_helper')
 
-RSpec.describe 'App routes to', type: :routing do
+RSpec.describe('App routes to', type: :routing) do
   it 'the new Friendship controller' do
     should route(:put, '/friendships/1').to('friendships#update', id: 1)
   end

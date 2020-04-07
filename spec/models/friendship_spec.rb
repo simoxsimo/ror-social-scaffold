@@ -1,6 +1,6 @@
-require 'rails_helper'
+require('rails_helper')
 
-RSpec.describe Friendship, type: :model do
+RSpec.describe(Friendship, type: :model) do
   context 'should have specific column. It has' do
     it 'a status column of boolean' do
       should have_db_column(:status).of_type(:boolean)

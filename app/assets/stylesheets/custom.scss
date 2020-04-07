@@ -119,7 +119,7 @@ a {
               background-color: #51659D;
               font-size: 12px;
   
-              &:focus{
+              &:hover{
                 display: block;
               }
             }
@@ -129,7 +129,7 @@ a {
               background-color: #2C2E35;
               font-size: 12px;
   
-              &:focus{
+              &:hover{
                 display: block;
               }
             }
@@ -182,7 +182,7 @@ a {
   padding: 5px;
   color: dimgrey;
   font-size: 14px;
-}dropdown-menu
+}
 
 .notice {
   background-color: #d4f6c6;
@@ -431,9 +431,27 @@ form {
 }
 
 .card-body{
-  width: 35%;
+  width: 100%;
   border-left: 3px solid;
   padding: 0 0 10px 10px;
+}
+
+.card-btns{
+  width: 50%;
+  display: flex;
+  align-items: center;
+
+  button{
+    margin-right: 10px;
+    height: 34px;
+  }
+
+  form{
+    width: 120%;
+    .btn{
+      width: 100%;
+    }
+  }
 }
 
 @media only screen and (min-width: 480px) {

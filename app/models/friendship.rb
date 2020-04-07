@@ -8,6 +8,10 @@ class Friendship < ApplicationRecord
     Friendship.find_by(sender_id: sender, receiver_id: receiver)
   end
 
+  def self.submit_friendship(current, my_friend)
+    Friendship.create(sender_id: current, receiver_id: my_friend, status: true)
+  end
+
   def accept_friendship
     update_attribute(:status, true)
   end

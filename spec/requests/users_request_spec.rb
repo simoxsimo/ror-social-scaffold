@@ -1,6 +1,6 @@
-require 'rails_helper'
+require('rails_helper')
 
-RSpec.describe 'Users', type: :feature do
+RSpec.describe('Users', type: :feature) do
   let(:name) { 'steve' }
   let(:email) { 'admin@com.com' }
   let(:password) { '123456' }
@@ -14,7 +14,7 @@ RSpec.describe 'Users', type: :feature do
     fill_in 'Email', with: u2.email
     fill_in 'Password', with: u2.password
     click_button 'Log in'
-    expect(find('.notice')).to have_content('Signed in successfully.')
+    expect(find('.notice')).to(have_content('Signed in successfully.'))
   end
   scenario 'User register as a user' do
     visit '/users/sign_up'
@@ -23,6 +23,6 @@ RSpec.describe 'Users', type: :feature do
     fill_in 'Password', with: password
     fill_in 'user_password_confirmation', with: user_password_confirmation
     click_button 'Sign up'
-    expect(find('.notice')).to have_content('Welcome! You have signed up successfully.')
+    expect(find('.notice')).to(have_content('Welcome! You have signed up successfully.'))
   end
 end
