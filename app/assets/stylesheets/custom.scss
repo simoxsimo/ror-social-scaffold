@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap");
+@import url("https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css");
 
+@import "bootstrap-sprockets";
+@import "bootstrap";
 $primary-color-dark: #689f38;
 $primary-color: #8bc34a;
 $primary-color-light: #dcedc8;
@@ -38,9 +41,10 @@ a {
 .nav {
   display: flex;
   justify-content: space-between;
-  padding: 16px 48px;
+  padding: 16px 48px 0;
   background-color: $primary-color-dark;
   color: $primary-color-light;
+  height: 60px;
 
   .menu {
     width: 80%;
@@ -57,7 +61,100 @@ a {
       }
     }
   }
-}
+
+  .dropdown{
+    width: 40px;
+    height: 60px;
+    position: absolute;
+    background-color: grey;
+    right: 0;
+    top: 0;
+
+    span {
+      display: flex;
+      padding-top: 10px;
+      justify-content: center;
+      font-size: 30px;
+    }
+
+    .dropbtn{
+      background: none;
+      border: none;
+      position: absolute;
+      top: -10px;
+      right: 0;
+    }
+  
+    .dropdown-content{
+      display: none;
+      position: absolute;
+      background-color: #689f38;
+      border-radius: 3px;
+      border-bottom: 8px solid;
+      border-color: #95D060;
+      width: 15vw;
+      right: 0;
+      top: 60px;
+  
+      ul{
+        margin: 0;
+  
+        li{
+          display: flex;
+          align-items: center;
+          justify-content: space-evenly;
+          margin-left: 10px;
+          padding-top: 5px;
+  
+          h5 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-right: 10px;
+            width: 80px;
+          }
+          .edit_friendship{
+
+            #accept-btn{
+              width: 90%;
+              background-color: #51659D;
+              font-size: 12px;
+  
+              &:hover{
+                display: block;
+              }
+            }
+              
+            #reject-btn{
+              width: 90%;
+              background-color: #2C2E35;
+              font-size: 12px;
+  
+              &:hover{
+                display: block;
+              }
+            }
+
+            &:hover{
+              display: block;
+            }
+          }
+        }
+      }
+
+      &:hover{
+        display: block;
+      }
+
+    }
+
+    &:focus{
+        .dropdown-content{
+          display: block;
+        }
+      }
+    }
+  }
+
 
 .nav a {
   color: $primary-color-light;
@@ -169,7 +266,7 @@ form {
 }
 
 .new_post,
-.new_comment{
+.new_comment {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -241,7 +338,7 @@ form {
   .post-liking {
     float: right;
 
-    a{
+    a {
       color: $primary-color-dark;
       font-weight: bold;
       font-size: 0.9em;
@@ -271,7 +368,7 @@ form {
       padding: 10px;
 
       p {
-        font-size: .8em;
+        font-size: 0.8em;
         width: 90%;
       }
       span {
@@ -294,18 +391,29 @@ form {
   }
 
   .profile-link {
-    font-size: 0.8em;
+    font-size: 0.9em;
     margin: 0 0 8px 0;
-    color: $primary-color-dark;
+    color: $primary-color-light;
   }
 }
 
 .user-section {
   width: 100%;
   margin-left: 16px;
-
+  
   h2 {
     text-transform: capitalize;
+  }
+  
+  .pending {
+    border : none;
+    margin-top: 5px;
+    width: 20%;
+    padding: 8px;
+    text-transform: uppercase;
+    font-weight: 900;
+    border-radius: 4px;
+    background-color: #FFBF00;
   }
 
   .timeline {
@@ -314,6 +422,35 @@ form {
       width: 100%;
     }
     justify-content: start;
+  }
+}
+
+.profile {
+  min-height: 355px;
+  display: inline-block;
+}
+
+.card-body{
+  width: 100%;
+  border-left: 3px solid;
+  padding: 0 0 10px 10px;
+}
+
+.card-btns{
+  width: 50%;
+  display: flex;
+  align-items: center;
+
+  button{
+    margin-right: 10px;
+    height: 34px;
+  }
+
+  form{
+    width: 120%;
+    .btn{
+      width: 100%;
+    }
   }
 }
 
@@ -341,4 +478,10 @@ form {
   .user-section {
     width: 50%;
   }
+  
+}
+
+.profile {
+  min-height: 355px;
+  display: inline-block;
 }

@@ -1,6 +1,6 @@
-# Scaffold for social media app with Ruby on Rails
+# Friendship - Rails Project
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+> This project consist of building a site similar to Facebook.
 
 ## Built With
 
@@ -9,77 +9,82 @@
 
 ## Live Demo
 
-TBA
+[Heroku Application](http://stayuntouched.herokuapp.com/)
 
+## Prerequisites
 
-## Getting Started
+The development environment uses `Ruby`, hence install ruby before proceeding.
 
-To get a local copy up and running follow these simple example steps.
+- Mac OS - `brew install ruby`
 
-### Prerequisites
+- Linux - `sudo apt-get install ruby-full`
 
-Ruby: 2.6.3
-Rails: 5.2.3
-Postgres: >=9.5
+- windows - Download RubyInstaller [here](https://rubyinstaller.org/), run it, and you are done!
 
-### Setup
+### Installing Dependencies
 
-Instal gems with:
+_(If you have **Bundler** installed "To Check if **Bundler** is installed, run this command \*\*\_bundle -v_**, if you get **_Bundler version 2.x.x_\*\*", please skip to the next step!)\_
 
-```
-bundle install
-```
-
-Setup database with:
+> To install **Bundler** run this command:
 
 ```
-   rails db:create
-   rails db:migrate
+  gem install bundler
 ```
 
-
-
-### Usage
-
-Start server with:
+Now, you are ready to install the _Gemfile_ dependencies. Run the following command and you are good to go:
 
 ```
-    rails server
+  bundle install
 ```
 
-Open `http://localhost:3000/` in your browser.
+## Installation and set-up
 
-### Run tests
+1. Clone the project - git clone`https://github.com/simoxsimo/ror-social-scaffold.git`
+
+2. Run `bundle` to get all the gems.
+
+3. Go to _config/database.yml_ change password to your postgres DB password, or follow this [guide](https://www.ionos.com/community/hosting/postgresql/how-to-use-postgresql-with-your-ruby-on-rails-application-on-ubuntu-1604/)
+
+4. Run `sudo service posgresql start`
+
+5. Run `rails db:migrate`
+
+## ⭐️ Running the code
+
+Inside The project Repository run the following command:
 
 ```
-    rpsec --format documentation
+    $ rails server
 ```
 
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
+Then, go to **_http://localhost:3000/_**
 
-### Deployment
+## Add populating the database using seed
 
-TBA
+1. Run `rails db:seed` to populating a database with the initial data needed for a Rails project.
 
-## Authors
+2. Login using `admin@admin.com` and password: 123456.
 
-TBA
+3. To use any other seeded email, the email prefix is `seed#{n}@admin.com` where (0 < n < 20) using the same password.
 
-## 🤝 Contributing
+### A Simple Use Case
 
-Contributions, issues and feature requests are welcome!
+![ezgif-2-c3e356058188](https://user-images.githubusercontent.com/57480558/78169976-c67d0600-7441-11ea-8b63-4f414ee7d096.gif)
 
-Feel free to check the [issues page](issues/).
+## ⭐️ Testing the code with Rspec
 
-## Show your support
+Inside The project Repository run the following command:
 
-Give a ⭐️ if you like this project!
+```
+    $ rspec
+```
 
-## Acknowledgments
+## Author
 
-TBA
+👤 **Bafiam Steve**
 
-## 📝 License
+- Github: [@bafiam](https://github.com/bafiam)
 
-TBA
+👤 **Mohammed TOUILI**
 
+- Github: [@simoxsimo](https://github.com/simoxsimo)
