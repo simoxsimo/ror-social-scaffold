@@ -1,5 +1,4 @@
 AllCops:
-  
   Exclude:
     - "db/**/*"
     - "bin/*" 
@@ -10,6 +9,7 @@ AllCops:
     - "node_modules/**/*"
 
   DisplayCopNames: true
+  NewCops: enable
 
 Layout/LineLength:
   Max: 120
@@ -29,12 +29,6 @@ Metrics/BlockLength:
   ExcludedMethods: ['describe']
   Max: 30
 
-Style/HashTransformValues:
-  Enabled: false
-Style/HashEachMethods:
-  Enabled: false
-Style/HashTransformKeys:
-  Enabled: false
 Style/Documentation:
   Enabled: false
 Style/ClassAndModuleChildren:
